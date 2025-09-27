@@ -58,7 +58,8 @@ function ToDoList()
             newnewDiv.remove()
         })
     })
-    local()
+}
+    /*local()
 }
 function local()
 {
@@ -68,5 +69,5 @@ function saved()
 {
     localStorage.innerHTML = localStorage.getItem('data')
 }
-saved()
+saved()*/
 
