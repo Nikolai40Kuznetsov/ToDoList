@@ -1,73 +1,62 @@
-let input = document.getElementById('input_to_list')
+let clearDataButton = document.getElementById('clearData')
+let inputToList = document.getElementById('input_to_list')
+let addButton = document.getElementById('addButton')
+let tasksList = document.getElementById('tasks_list')
 
-function ToDoList()
- {
-    let newDiv = document.createElement('p')
-    newDiv.textContent = input.value
-    let parentElement = document.getElementById('task_list')
-    parentElement.appendChild(newDiv)
-    input.value = ' '
-    let newInput = document.createElement('input')
-    newInput.type = 'checkbox'
-    parentElement.appendChild(newInput);
-    newInput.addEventListener('click', function(evt)
-    {
-        let checkbox = evt.target
-        if (checkbox.checked)
-        {
-            newDiv.style.textDecoration = 'line-through'
-        } 
-        else 
-        {
-            newDiv.style.textDecoration = 'none'
-        }   
-    })
-    let delete_el = document.createElement('button')
-    delete_el.textContent = 'Удалить'
-    parentElement.appendChild(delete_el)
-    delete_el.addEventListener('click', function(evt)
-    {
-        delete_el.remove()
-        newInput.remove()
-        newDiv.remove()
-        redact.remove()
-        save.remove()
-    })
-    let redact = document.createElement('button')
-    redact.textContent = 'Редактировать'
-    parentElement.appendChild(redact)
-    redact.addEventListener('click', function(evt)
-    {
-        newDiv.style.display = 'none'
-        redact.style.display = 'none'
-        delete_el.style.display = 'none'
-        newInput.style.display = 'none'
-        let newnewDiv = document.createElement('input')
-        parentElement.appendChild(newnewDiv)
-        let save = document.createElement('button')
-        save.textContent = 'Сохранить'
-        parentElement.appendChild(save)
-        save.addEventListener('click', function(evt)
-        {
-            newDiv.style.display = 'block'
-            redact.style.display = 'block'
-            delete_el.style.display = 'block'
-            newInput.style.display = 'block'
-            newDiv.textContent = newnewDiv.value
-            save.remove()
-            newnewDiv.remove()
-        })
-    })
+function addTask() {
+    let task = document.createElement('div');
+    tasksList.append(task);
+
+    let check = document.createElement('input');
+    check.type = 'checkbox';
+    task.append(check);
+
+    let taskText = document.createElement('p');
+    taskText.textContent = inputToList.value;
+    task.append(taskText);
+
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = "Удалить";
+    task.append(deleteButton);
+
+    let editButton = document.createElement('button');
+    editButton.textContent = "Редактировать";
+    task.append(editButton);
+
+    inputToList.value = '';
+
+    savedTask();
 }
-    /*local()
+addButton.addEventListener('click', addTask);
+
+function changeTask(e){
+    if(e.target.tagName === 'INPUT'){
+        e.target.parentElement.classList.toggle('checked');
+        savedTask()
+    } else if (e.target.tagName === 'BUTTON' && e.target.textContent === 'Удалить') {
+        e.target.parentElement.remove()
+        savedTask()
+    } else if (e.target.tagName === 'BUTTON' && e.target.textContent === 'Редактировать') {
+        let new_input = document.createElement('input')
+        e.target.parentElement.textContent = new_input.value
+        new_input.remove()
+        savedTask()
+    }
 }
-function local()
-{
-    localStorage.setItem('data', parentElement.innerHTML)
+tasksList.addEventListener('click', changeTask);
+
+
+
+function savedTask(){
+    localStorage.setItem('data', tasksList.innerHTML);
 }
-function saved()
-{
-    localStorage.innerHTML = localStorage.getItem('data')
+function showTask(){    
+    tasksList.innerHTML = localStorage.getItem('data')
 }
-saved()*/
+function clearData() {
+    localStorage.clear();
+}
+clearDataButton.addEventListener('click', clearData)
+
+showTask()
 
