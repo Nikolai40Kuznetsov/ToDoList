@@ -1,3 +1,101 @@
-.checked {
+.checked
+{
     text-decoration: line-through;
+}
+body 
+{
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    color: #2c3e50;
+}
+#input_to_list 
+{
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+#input_to_list:focus
+{
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+button
+{
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+button:hover 
+{
+    background-color: #2980b9;
+}
+#clearData 
+{
+    background-color: #e74c3c;
+}
+#clearData:hover 
+{
+    background-color: #c0392b;
+}
+#tasks_list 
+{
+    margin-top: 20px;
+}
+#tasks_list > div
+{
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    background-color: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#tasks_list input[type="checkbox"] 
+{
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+#tasks_list p
+{
+    flex-grow: 1;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 16px;
+}
+#tasks_list > div.checked p
+ {
+    text-decoration: line-through;
+    color: #7f8c8d;
+    opacity: 0.7;
+}
+#tasks_list > div button 
+{
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+#tasks_list > div button:last-child
+ {
+    background-color: #9b59b6;
+}
+#tasks_list > div button:last-child:hover 
+{
+    background-color: #8e44ad;
 }
